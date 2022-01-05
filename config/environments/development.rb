@@ -33,8 +33,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
@@ -60,6 +58,27 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  # for a development environment
+  #config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
+  # for the Devise mailer in our environment file
+  config.action_mailer.perform_deliveries = true
+  # care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "singh.prakashkumar.ongraph@gmail.com",
+    :password             => "ongraph@81",
+    :domain               => "localhost:3000",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
