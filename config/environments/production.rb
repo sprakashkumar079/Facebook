@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+equire "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -16,18 +16,17 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  host = 'https://hidden-ocean-29030.herokuapp.com/'
+  host = 'https://hidden-ocean-29030.herokuapp.com'
   # Use this on the cloud IDE.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: host }
 
-  # SMTP settings for gmail
+# SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :user_name            => "singh.prakashkumar.ongraph@gmail.com",
     :password             => "ongraph@81",
-    :domain               => "heroku.com",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
@@ -45,6 +44,10 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+
+  # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies.
+  config.force_ssl = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
@@ -76,7 +79,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "Facebook_production"
+  # config.active_job.queue_name_prefix = "sample_app_production"
 
   config.action_mailer.perform_caching = false
 
