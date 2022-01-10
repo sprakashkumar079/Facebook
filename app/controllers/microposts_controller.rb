@@ -13,6 +13,7 @@ class MicropostsController < ApplicationController
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
+      render 'shared/_micropost_form'
     end
   end
 

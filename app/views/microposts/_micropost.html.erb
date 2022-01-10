@@ -9,5 +9,11 @@
     <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
 
 </span>
+  <%= render 'shared/comment_form', micropost: micropost %>
+  <div class="border-bottom border-top">
+    <div class="container">
+      <%= render 'likes/like_posts', object: object%>
+    </div>
+  </div>
 </li>
 
