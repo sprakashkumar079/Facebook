@@ -1,3 +1,3 @@
-#home controller for first page 
+#home controller for first page
 class StaticPagesController < ApplicationController
 end

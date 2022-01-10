@@ -1,16 +1,24 @@
 <!--home page -->
-<div class="center jumbotron"> 
+<div class="center jumbotron">
+  <% if user_signed_in? %>
+    <div class="row">
+      <aside class="col-md-4">
+        <section class="user_info">
+          <%= render 'shared/user_info' %>
+        </section>
+        <section class="micropost_form">
+          <%= render 'shared/micropost_form' %>
+        </section>
+     </aside>
+     <div class="col-md-8"> <h3>Micropost Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+    </div>
+  <% else %>
+    <h1>Welcome to world with Facebook</h1>
+    This is the home page for the
+    <a href="https://hidden-ocean-29030.herokuapp.com/">Facebook</a>
+    <%= link_to "Sign up Now", new_user_registration_path, :class => 'btn btn-lg btn-primary'  %>
+  <% end %>
+</div>
 
-<% if user_signed_in? %>
-  <h1>Hello Friends, welcome to social world</h1>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> 
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  
-<% else %>
-  <h1>Welcome to world with Facebook</h1>
-  This is the home page for the
-  <a href="https://hidden-ocean-29030.herokuapp.com/">Facebook</a>
-  <%= link_to "Sign up Now", new_user_registration_path, :class => 'btn btn-lg btn-primary'  %> 
-<% end %>
-  

@@ -10,12 +10,8 @@ class UsersController < ApplicationController
   # # GET /users/1
   # # GET /users/1.json
   def show
-
-  end
-
-  # GET /users/1/edit
-  def edit
-
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # # PATCH/PUT /users/1
