@@ -23,7 +23,8 @@ class LikesController < ApplicationController
   end
 
   private
-
+  # The type_subject?() method receives the parameters from the route and
+  # determines if the id obtained is that of a comment or a post.
   def type_subject?(params)
     type = 'post' if params.key?('post_id')
     type = 'comment' if params.key?('comment_id')
@@ -31,20 +32,21 @@ class LikesController < ApplicationController
     subject = Comment.find(params[:comment_id]) if type == 'comment'
     [type, subject]
   end
-
+  # for already like
   def already_liked?(type)
     result = false
     if type == 'post'
       result = Like.where(user_id: current_user.id,
                           post_id: params[:post_id]).exists?
     end
+    # for comment
     if type == 'comment'
       result = Like.where(user_id: current_user.id,
                           comment_id: params[:comment_id]).exists?
     end
     result
   end
-
+  # for dislike
   def dislike(type)
     @like = Like.find_by(post_id: params[:post_id]) if type ==
                                                        'post'
