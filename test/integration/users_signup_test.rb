@@ -1,6 +1,5 @@
 require 'test_helper'
 class UsersSignupTest < ActionDispatch::IntegrationTest
-
   # setup for mails activation
   def setup
       ActionMailer::Base.deliveries.clear
@@ -35,7 +34,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     user = assigns(:user)
     assert_not user.activated?
     # Try to log in before activation.
-    signed_in_as(@user)
+    sign_in_as(@user)
     assert_not is_signed_in?
     # Invalid activation token
     get edit_account_activation_path("invalid token", email: user.email)

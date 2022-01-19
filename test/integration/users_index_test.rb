@@ -1,16 +1,12 @@
 require "test_helper"
-
 class UsersIndexTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  #setup method
   def setup
     @admin = users(:michael)
     @non_admin = users(:archer)
   end
   # index as admin including pagination and delete links
   test "index as admin including pagination and delete links" do
-    signed_in_as(@admin)
+    sign_in_as(@admin)
     get users_path
     assert_template 'users/index'
     assert_select 'div.pagination'
@@ -25,9 +21,10 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
       delete user_path(@non_admin)
     end
   end
+
   # index as non-admin
   test "index as non-admin" do
-    signed_in_as(@non_admin)
+    sign_in_as(@non_admin)
     get users_path
     assert_select 'a', text: 'delete', count: 0
   end

@@ -1,6 +1,5 @@
 require 'test_helper'
 class FriendshipsControllerTest < ActionDispatch::IntegrationTest
-
   # setup user for friend to friends
   def setup
     @user1 = users(:michael)

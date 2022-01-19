@@ -1,6 +1,5 @@
 require 'test_helper'
 class UserTest < ActiveSupport::TestCase
-
   #setup for user
   def setup
     @user = User.new(first_name: "Example ",
@@ -39,5 +38,4 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
-
 end

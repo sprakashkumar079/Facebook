@@ -1,7 +1,7 @@
 require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
   def setup
-  @user = users(:michael)
+    @user = users(:michael)
   end
 
   #unsuccessful edit
@@ -21,7 +21,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   #successful user update for current user
   test "successful edit" do
-    signed_in_as(@user)
+    sign_in_as(@user)
     get edit_user_registration_path
     assert_template 'users/edit'
     name = "Foo Bar"
@@ -40,7 +40,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   #successful user update for current user
   test "successful edit with friendly forwarding" do
     get edit_user_registration_path
-    signed_in_as(@user)
+    sign_in_as(@user)
     assert_redirected_to edit_user_registration_path
     name = "Foo Bar"
     email = "foo@bar.com"
